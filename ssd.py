@@ -45,7 +45,10 @@ class SSD(nn.Module):
 
         if phase == 'test':
             self.softmax = nn.Softmax(dim=-1)
-            self.detect = Detect(num_classes, 0, 200, 0.01, 0.45)
+            ## FIXME: not the right fix (we should instead make
+            ## forward a static method.  See
+            ## https://github.com/amdegroot/ssd.pytorch/issues/444
+            self.detect = Detect(num_classes, 0, 200, 0.01, 0.45).forward
 
     def forward(self, x):
         """Applies network layers and ops on input image(s) x.
