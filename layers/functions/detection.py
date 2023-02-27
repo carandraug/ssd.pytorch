@@ -37,6 +37,8 @@ class Detect(Function):
         conf_preds = conf_data.view(num, num_priors,
                                     self.num_classes).transpose(2, 1)
 
+        loc_data = loc_data.cuda()
+        prior_data = prior_data.cuda()
         # Decode predictions into bboxes.
         for i in range(num):
             decoded_boxes = decode(loc_data[i], prior_data, self.variance)
