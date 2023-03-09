@@ -39,6 +39,8 @@ class Detect(Function):
 
         ## FIXME: this will be mixed device if using CUDA.  Need to
         ## move one to the other (which one?)
+        print("loc_data", loc_data.device)
+        print("prior_data", prior_data.device)
         # loc_data = loc_data.cuda()
         # prior_data = prior_data.cuda()
 
